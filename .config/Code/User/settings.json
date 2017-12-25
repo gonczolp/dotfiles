@@ -1,0 +1,24 @@
+{
+    "workbench.sideBar.location": "left",
+    "workbench.activityBar.visible": true,
+    "workbench.statusBar.visible": true,
+    "files.eol": "\n",
+    "workbench.colorTheme": "Dracula",
+    "workbench.iconTheme": "material-icon-theme",
+    "editor.tabSize": 2,
+    "editor.minimap.enabled": false,
+    "editor.fontFamily": "Ubuntu mono, 'Courier New', monospace",
+    "window.zoomLevel": 0,
+    "window.menuBarVisibility": "toggle",
+    "editor.fontSize": 15,
+    "workbench.startupEditor": "none",
+    "extensions.ignoreRecommendations": false,
+    "workbench.panel.location": "bottom",
+    "explorer.confirmDragAndDrop": false,
+    "explorer.confirmDelete": false,
+    "editor.cursorStyle": "block",
+    "workbench.colorCustomizations": {
+        "editorCursor.foreground": "#f8f8f2"
+    },
+    "editor.cursorBlinking": "blink"
+}

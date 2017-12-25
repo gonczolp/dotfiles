@@ -1,0 +1,150 @@
+[colors]
+;background = ${xrdb:color0:#222}
+background = #2f343f
+;background = #000000
+background-alt = #282a36
+;foreground = ${xrdb:color7:#222}
+foreground = #a3b8c5
+;foreground = #bebebe
+foreground-alt = #88b8c5
+primary = #ffb52a
+secondary = #e60053
+alert = #bd2c40
+
+[bar/example]
+monitor = ${env:MONITOR:LVDS1}
+monitor-fallback = ${env:MONITOR:LVDS1}
+width = 100%
+height = 20
+#fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 
+line-color = #f00
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 
+module-margin-right = 6
+
+font-0 = ubuntu:bold:pixelsize=10;1
+font-1 = fontawesome:fontformat=truetype:size=8:antialias=false;0
+
+modules-left = 
+modules-center = xwindow
+modules-right = pkg redshift wlan eth xbacklight battery volume date
+
+tray-position = right
+tray-padding = 1
+tray-detached = false
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/xwindow]
+type = internal/xwindow
+
+label = %title%
+label-maxlen = 50
+
+[module/pkg]
+type = custom/script
+interval = 1200
+
+label = "%output:0:30%"
+label-foreground = ${colors.foreground}
+exec = ~/.config/polybar/pkg.sh
+
+[module/redshift]
+type = custom/script
+interval = 5
+
+exec = ~/.config/polybar/redshift.sh
+
+[module/xbacklight]
+type = internal/xbacklight
+
+label =  %percentage%%
+
+enable-scroll = true
+
+[module/wlan]
+type = internal/network
+interface = wlp2s0
+interval = 3.0
+
+label-connected =  %essid%
+
+[module/eth]
+type = internal/network
+interface = enp12s0
+interval = 3.0
+
+label-connected =  %local_ip%
+
+[module/date]
+type = internal/date
+interval = 5
+
+date = "%Y %b %d"
+
+time = %H:%M
+
+format-prefix = 
+format-prefix-foreground = ${colors.foreground}
+
+label =  %date%       %time%
+
+[module/volume]
+type = internal/volume
+
+format-volume = <ramp-volume> <label-volume>
+label-volume = %percentage%%
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+
+label-muted = MUTED
+
+[module/battery]
+type = internal/battery
+
+; $ ls -1 /sys/class/power_supply/
+battery = BAT0
+adapter = AC
+
+poll-interval = 5
+
+format-charging = <label-charging>
+
+format-discharging = <ramp-capacity> <label-discharging>
+
+label-charging =  %percentage%%
+
+label-discharging = %percentage%%
+
+label-full =  100%
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-foreground = ${colors.foreground}
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0
+
+; vim:ft=dosini
