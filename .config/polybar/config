@@ -7,16 +7,13 @@ background-alt = #282a36
 foreground = #a3b8c5
 ;foreground = #bebebe
 foreground-alt = #88b8c5
-primary = #ffb52a
-secondary = #e60053
-alert = #bd2c40
+urgent = #F44336
 
 [bar/example]
-monitor = ${env:MONITOR:LVDS1}
-monitor-fallback = ${env:MONITOR:LVDS1}
+monitor = ${env:MONITOR:LVDS-1}
+monitor-fallback = ${env:MONITOR:LVDS-1}
 width = 100%
 height = 20
-#fixed-center = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -30,11 +27,13 @@ padding-right = 2
 module-margin-left = 
 module-margin-right = 6
 
-font-0 = ubuntu:bold:pixelsize=10;1
-font-1 = fontawesome:fontformat=truetype:size=8:antialias=false;0
+font-0 = Ubuntu:style=Bold:size=10;2
+font-1 = Font Awesome 5 Free:style=Solid:size=8;2
+font-2 = Font Awesome 5 Free:style=Regular:size=8;2
+font-3 = Font Awesome 5 Brands:style=Regular:size=8;2
 
-modules-left = 
-modules-center = xwindow
+modules-left = i3 xwindow
+modules-center = 
 modules-right = pkg redshift wlan eth xbacklight battery volume date
 
 tray-position = right
@@ -44,11 +43,48 @@ tray-detached = false
 cursor-click = pointer
 cursor-scroll = ns-resize
 
+
+[module/i3]
+type = internal/i3
+
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+
+ws-icon-0 = 0;
+ws-icon-1 = 1;
+ws-icon-2 = 2;
+ws-icon-3 = 3;
+ws-icon-4 = 4;
+ws-icon-5 = 5;
+ws-icon-6 = 6;
+ws-icon-7 = 7;
+ws-icon-8 = 8;
+ws-icon-9 = 9;
+ws-icon-default = 
+
+format = <label-state> <label-mode>
+
+label-focused = %index%  %icon%
+label-focused-foreground = ${colors.background}
+label-focused-background = ${colors.foreground}
+label-focused-padding = 4
+
+label-unfocused = %index%  %icon%
+label-unfocused-padding = 4
+
+label-visible = %index%  %icon%
+label-visible-padding = 4
+
+label-urgent = %index%: %icon%
+label-urgent-foreground = ${colors.background}
+label-urgent-background = ${colors.urgent}
+label-urgent-padding = 4
+
 [module/xwindow]
 type = internal/xwindow
 
 label = %title%
-label-maxlen = 50
+label-maxlen = 100
 
 [module/pkg]
 type = custom/script
@@ -96,7 +132,7 @@ time = %H:%M
 format-prefix = 
 format-prefix-foreground = ${colors.foreground}
 
-label =  %date%       %time%
+label = %date%       %time%
 
 [module/volume]
 type = internal/volume

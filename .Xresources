@@ -8,6 +8,9 @@ URxvt.urgentOnBell: true
 ! font
 URxvt.font: xft:UbuntuMono:size=12
 
+! terminal padding
+URxvt.internalBorder: 10
+
 ! make otf / ttf fonts look pretty.  does not matter if you are using a bitmap font.
 Xft.autohint: 0
 Xft.lcdfilter:  lcddefault
@@ -26,7 +29,8 @@ URxvt.perl-ext-common: default,matcher,vtwheel
 *.cursorColor:  #ffffff
 URxvt.intensityStyles: false
 URxvt*depth: 32
-URxvt*background: #2f343f
+URxvt*background: rgba:1b00/2100/2c00/c800
+!#2f343f
 
 ! Dracula Xresources palette
 *.foreground: #F8F8F2
@@ -47,3 +51,16 @@ URxvt*background: #2f343f
 *.color14:    #9AEDFE
 *.color7:     #BFBFBF
 *.color15:    #E6E6E6
+
+! define rofi settings
+rofi.eh: 1
+rofi.fullscreen: true
+rofi.padding: 300
+rofi.bw: 0
+rofi.color-enabled: true
+rofi.color-window: #DD2f343f, #f3f4f5, #f3f4f5
+rofi.color-normal: #002f343f, #f3f4f5, #002f343f, #002f343f, #9575cd
+rofi.color-active: #002f343f, #f3f4f5, #002f343f, #002f343f, #9575cd
+rofi.color-urgent: #002f343f, #f3f4f5, #002f343f, #002f343f, #9575cd
+rofi.separator-style: solid
+rofi.hide-scrollbar: true
