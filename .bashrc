@@ -9,7 +9,7 @@ PS1='[\u@\h \W]\$ '
 
 # generated
 BROWSER=/usr/bin/chromium
-EDITOR=/usr/bin/nano
+EDITOR=/usr/bin/vim
 
 # aliases
 alias ls='ls --group-directories-first --color=auto -F'
@@ -20,6 +20,10 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
+alias ll='ls -la'
+alias update='yaourt -Syua --noconfirm'
+alias remove='yaourt -Rns'
+alias open='xdg-open'
 
 # apply powerline
 source ~/.bash-powerline.sh

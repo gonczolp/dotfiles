@@ -4,12 +4,12 @@ __powerline() {
 
     # Unicode symbols
     readonly PS_SYMBOL_DARWIN=''
-    readonly PS_SYMBOL_LINUX='$'
+    readonly PS_SYMBOL_LINUX='❯'
     readonly PS_SYMBOL_OTHER='%'
-    readonly GIT_BRANCH_SYMBOL='⑂ '
-    readonly GIT_BRANCH_CHANGED_SYMBOL='+'
-    readonly GIT_NEED_PUSH_SYMBOL='⇡'
-    readonly GIT_NEED_PULL_SYMBOL='⇣'
+    readonly GIT_BRANCH_SYMBOL='@'
+    readonly GIT_BRANCH_CHANGED_SYMBOL='' #⇅
+    readonly GIT_NEED_PUSH_SYMBOL='+'
+    readonly GIT_NEED_PULL_SYMBOL='-'
 
     # Solarized colorscheme
     readonly FG_BASE03="\[$(tput setaf 40)\]"
@@ -66,7 +66,7 @@ __powerline() {
       esac
     fi
 
-    __git_info() { 
+    __git_info() {
         [ -x "$(which git)" ] || return    # git not found
 
         local git_eng="env LANG=C git"   # force git output in English to make our work easier
@@ -77,7 +77,7 @@ __powerline() {
         local marks
 
         # branch is modified?
-        [ -n "$($git_eng status --porcelain)" ] && marks+=" $GIT_BRANCH_CHANGED_SYMBOL"
+        [ -n "$($git_eng status --porcelain)" ] && marks+="$GIT_BRANCH_CHANGED_SYMBOL"
 
         # how many commits local branch is ahead/behind of remote?
         local stat="$($git_eng status --porcelain --branch | grep '^##' | grep -o '\[.\+\]$')"
@@ -87,19 +87,19 @@ __powerline() {
         [ -n "$behindN" ] && marks+=" $GIT_NEED_PULL_SYMBOL$behindN"
 
         # print the git branch segment without a trailing newline
-        printf " $GIT_BRANCH_SYMBOL$branch$marks "
+        printf " $GIT_BRANCH_SYMBOL$branch$marks"
     }
 
     ps1() {
         # Check the exit code of the previous command and display different
-        # colors in the prompt accordingly. 
+        # colors in the prompt accordingly.
         if [ $? -eq 0 ]; then
             local FG_EXIT="$FG_GREEN"
         else
             local FG_EXIT="$FG_RED"
         fi
 
-        PS1="$BOLD$FG_BASE1 \w$RESET"
+        PS1="$BOLD$FG_BASE0 \w$RESET"
         # Bash by default expands the content of PS1 unless promptvars is disabled.
         # We must use another layer of reference to prevent expanding any user
         # provided strings, which would cause security issues.
@@ -107,10 +107,10 @@ __powerline() {
         # Related fix in git-bash: https://github.com/git/git/blob/9d77b0405ce6b471cb5ce3a904368fc25e55643d/contrib/completion/git-prompt.sh#L324
         if shopt -q promptvars; then
             __powerline_git_info="$(__git_info)"
-            PS1+="$FG_BLUE\${__powerline_git_info}$RESET"
+            PS1+="$FG_ORANGE\${__powerline_git_info}$RESET"
         else
             # promptvars is disabled. Avoid creating unnecessary env var.
-            PS1+="$FG_BLUE$(__git_info)$RESET"
+            PS1+="$FG_ORANGE$(__git_info)$RESET"
         fi
         PS1+="$BOLD$FG_EXIT $PS_SYMBOL $RESET"
     }
