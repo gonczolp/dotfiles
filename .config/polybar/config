@@ -1,13 +1,13 @@
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #2f343f
+background = #282828
 ;background = #000000
 background-alt = #282a36
 ;foreground = ${xrdb:color7:#222}
-foreground = #a3b8c5
-;foreground = #bebebe
+foreground = #ebdbb2
+;foreground = #ffffff
 foreground-alt = #88b8c5
-urgent = #F44336
+urgent = #fb4934
 
 [bar/example]
 monitor = ${env:MONITOR:LVDS-1}
@@ -18,13 +18,13 @@ height = 20
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 
+line-size =
 line-color = #f00
 
 padding-left = 0
 padding-right = 2
 
-module-margin-left = 
+module-margin-left =
 module-margin-right = 6
 
 font-0 = Ubuntu:style=Bold:size=10;2
@@ -33,8 +33,8 @@ font-2 = Font Awesome 5 Free:style=Regular:size=8;2
 font-3 = Font Awesome 5 Brands:style=Regular:size=8;2
 
 modules-left = i3 xwindow
-modules-center = 
-modules-right = pkg redshift wlan eth xbacklight battery volume date
+modules-center =
+modules-right = pkg wlan eth xbacklight battery volume date
 
 tray-position = right
 tray-padding = 1
@@ -50,41 +50,41 @@ type = internal/i3
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
 
-ws-icon-0 = 0;
-ws-icon-1 = 1;
-ws-icon-2 = 2;
-ws-icon-3 = 3;
-ws-icon-4 = 4;
-ws-icon-5 = 5;
-ws-icon-6 = 6;
-ws-icon-7 = 7;
-ws-icon-8 = 8;
-ws-icon-9 = 9;
-ws-icon-default = 
+ws-icon-0 = 0;
+ws-icon-1 = 1;
+ws-icon-2 = 2;
+ws-icon-3 = 3;
+ws-icon-4 = 4;
+ws-icon-5 = 5;
+ws-icon-6 = 6;
+ws-icon-7 = 7;
+ws-icon-8 = 8;
+ws-icon-9 = 9;
+ws-icon-default =;
 
 format = <label-state> <label-mode>
 
 label-focused = %index%  %icon%
 label-focused-foreground = ${colors.background}
 label-focused-background = ${colors.foreground}
-label-focused-padding = 4
+label-focused-padding = 3
 
 label-unfocused = %index%  %icon%
-label-unfocused-padding = 4
+label-unfocused-padding = 3
 
 label-visible = %index%  %icon%
-label-visible-padding = 4
+label-visible-padding = 3
 
-label-urgent = %index%: %icon%
+label-urgent = %index% %icon%
 label-urgent-foreground = ${colors.background}
 label-urgent-background = ${colors.urgent}
-label-urgent-padding = 4
+label-urgent-padding = 3
 
 [module/xwindow]
 type = internal/xwindow
 
 label = %title%
-label-maxlen = 100
+label-maxlen = 80
 
 [module/pkg]
 type = custom/script
@@ -103,7 +103,7 @@ exec = ~/.config/polybar/redshift.sh
 [module/xbacklight]
 type = internal/xbacklight
 
-label =  %percentage%%
+label =  %percentage%
 
 enable-scroll = true
 
@@ -112,14 +112,14 @@ type = internal/network
 interface = wlp2s0
 interval = 3.0
 
-label-connected =  %essid%
+label-connected =  %essid%
 
 [module/eth]
 type = internal/network
 interface = enp12s0
 interval = 3.0
 
-label-connected =  %local_ip%
+label-connected =  %local_ip%
 
 [module/date]
 type = internal/date
@@ -129,16 +129,16 @@ date = "%Y %b %d"
 
 time = %H:%M
 
-format-prefix = 
+format-prefix =
 format-prefix-foreground = ${colors.foreground}
 
-label = %date%       %time%
+label = %date%     %time%
 
 [module/volume]
 type = internal/volume
 
 format-volume = <ramp-volume> <label-volume>
-label-volume = %percentage%%
+label-volume = %percentage%
 
 ramp-volume-0 = 
 ramp-volume-1 = 
@@ -159,11 +159,11 @@ format-charging = <label-charging>
 
 format-discharging = <ramp-capacity> <label-discharging>
 
-label-charging =  %percentage%%
+label-charging =  %percentage%
 
-label-discharging = %percentage%%
+label-discharging = %percentage%
 
-label-full =  100%
+label-full =  100
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 

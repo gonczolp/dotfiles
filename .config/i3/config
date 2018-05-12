@@ -14,10 +14,10 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+eacute focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -26,10 +26,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+eacute move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -50,10 +50,13 @@ bindsym $mod+Control+Up move workspace to output up
 bindsym $mod+Control+Right move workspace to output right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+# bindsym $mod+h split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+# bindsym $mod+v split v
+
+# toggle split between horizontal and vertical
+bindsym $mod+v split toggle
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -73,7 +76,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+Shift+a focus child
 
 # define workspaces
 set $ws0 0
@@ -118,6 +121,8 @@ assign [class="URxvt"] $ws1
 assign [class="Pamac-manager"] $ws1
 assign [class="Code"] $ws2
 assign [class="Slack"] $ws8
+assign [class="Spotify"] $ws9
+assign [class="spotify"] $ws9
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -132,10 +137,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 5 px or 5 ppt
-        bindsym k resize grow height 5 px or 5 ppt
-        bindsym l resize shrink height 5 px or 5 ppt
-        bindsym eacute resize grow width 5 px or 5 ppt
+        bindsym h resize shrink width 5 px or 5 ppt
+        bindsym j resize grow height 5 px or 5 ppt
+        bindsym k resize shrink height 5 px or 5 ppt
+        bindsym l resize grow width 5 px or 5 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 5 px or 5 ppt
@@ -150,36 +155,39 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-set $bg-color 	         #2f343f
-set $inactive-bg-color   #2f343f
-set $text-color          #f3f4f5
-set $inactive-text-color #676E7D
-set $urgent-bg-color     #F44336
+set $bg-color 	                #282828
+set $border-color 	        #3c3836
+set $inactive-bg-color          #1d2021
+set $indicator                  #504945
+set $text-color                 #ebdbb2
+set $inactive-text-color        #a89984
+set $urgent-bg-color            #fb4934
 
 # window colors
 #                       border              background         text                 indicator
-client.focused          $bg-color           $bg-color          $text-color          #00ff00
-client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
-client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
-client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
+client.focused          $border-color       $border-color      $text-color          $indicator
+client.unfocused        $bg-color           $bg-color          $inactive-text-color $indicator
+client.focused_inactive $bg-color           $bg-color          $inactive-text-color $indicator
+client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          $indicator
 
-# configure gaps
-new_window none
-gaps inner 10
-smart_gaps on
+# configure border styles
+default_border pixel 3
+default_floating_border normal
+hide_edge_borders smart
 
-# thin borders
-hide_edge_borders both
+# optional gaps
+# gaps inner 10
+# smart_gaps on
 
 # lock
-bindsym Scroll_Lock exec i3lock --color "$bg-color"
+bindsym Scroll_Lock exec i3lock-fancy -t ""
 
 # launcher
 # bindsym $mod+d exec dmenu_run
-bindsym $mod+d exec rofi -show run -font "Ubuntu Regular 18" -config "~/.Xresources"
+bindsym $mod+d exec rofi -show run
 
 # printscreen
-bindsym Print exec maim -s | xclip -selection clipboard -t image/png
+bindsym Print exec maim -su | xclip -selection clipboard -t image/png
 
 # define touchpad name via xinput
 set $TOUCHPAD "AlpsPS/2 ALPS DualPoint TouchPad"
@@ -210,7 +218,7 @@ bindsym XF86AudioPrev exec playerctl previous
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # wallpaper
-exec_always --no-startup-id feh --bg-fill $HOME/pics/lights.png
+exec_always --no-startup-id feh --bg-fill $HOME/pics/flamingo.jpg
 
 # network manager
 exec --no-startup-id nm-applet &
@@ -226,4 +234,4 @@ exec --no-startup-id dunst &
 exec --no-startup-id redshift &
 
 # start compositor
-# exec --no-startup-id compton -b
+exec --no-startup-id compton -b
