@@ -1,24 +1,31 @@
 {
+    // workbench settings
     "workbench.sideBar.location": "left",
     "workbench.activityBar.visible": true,
     "workbench.statusBar.visible": true,
-    "files.eol": "\n",
     "workbench.colorTheme": "Dracula",
     "workbench.iconTheme": "material-icon-theme",
+    "workbench.startupEditor": "none",
+    "workbench.editor.tabSizing": "shrink",
+    // editor font
     "editor.tabSize": 2,
     "editor.minimap.enabled": false,
     "editor.fontFamily": "Monaco, monospace",
+    "editor.fontWeight": "700",
+    "editor.fontSize": 13,
     "window.zoomLevel": 0,
     "window.menuBarVisibility": "toggle",
-    "editor.fontSize": 13,
-    "workbench.startupEditor": "none",
     "extensions.ignoreRecommendations": true,
     "explorer.confirmDragAndDrop": false,
     "explorer.confirmDelete": false,
-    "workbench.editor.tabSizing": "shrink",
-    "editor.fontWeight": "700",
+    // data collection
     "telemetry.enableTelemetry": false,
     "telemetry.enableCrashReporter": false,
+    // files
+    "files.eol": "\n",
     "files.trimTrailingWhitespace": true,
-    "files.insertFinalNewline": true
+    "files.insertFinalNewline": true,
+    // terminal
+    "terminal.integrated.fontWeight": "bold",
+    "terminal.integrated.fontSize": 13,
 }

@@ -7,9 +7,10 @@
 
 PS1='[\u@\h \W]\$ '
 
-# generated
+# defaults
 BROWSER=/usr/bin/chromium
 EDITOR=/usr/bin/vim
+set -o vi
 
 # aliases
 alias ls='ls --group-directories-first --color=auto -F'
@@ -21,8 +22,6 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 alias ll='ls -la'
-alias update='yaourt -Syua --noconfirm'
-alias remove='yaourt -Rns'
 alias open='xdg-open'
 
 # apply powerline

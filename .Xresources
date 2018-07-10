@@ -28,7 +28,7 @@ URxvt.matcher.button: 1
 URxvt.perl-ext-common: default,matcher,vtwheel
 
 ! colors
-*.cursorColor:  #fbf1c7
+*.cursorColor:  #ebdbb2
 URxvt*depth: 32
 
 ! hard contrast: *background: #1d2021
@@ -59,4 +59,3 @@ URxvt*depth: 32
 ! LightGrey + White
 *color7:  #a89984
 *color15: #ebdbb2
-
