@@ -3,10 +3,11 @@
     "workbench.sideBar.location": "left",
     "workbench.activityBar.visible": true,
     "workbench.statusBar.visible": true,
-    "workbench.colorTheme": "Dracula",
+    "workbench.colorTheme": "Dracula Soft",
     "workbench.iconTheme": "material-icon-theme",
     "workbench.startupEditor": "none",
     "workbench.editor.tabSizing": "shrink",
+    "window.titleBarStyle": "native",
     // editor font
     "editor.tabSize": 2,
     "editor.minimap.enabled": false,
@@ -28,4 +29,7 @@
     // terminal
     "terminal.integrated.fontWeight": "bold",
     "terminal.integrated.fontSize": 13,
+    // to remove
+    "FSharp.fsiFilePath": "fsharpi",
+    "javascript.updateImportsOnFileMove.enabled": "never",
 }

@@ -3,9 +3,9 @@
 __powerline() {
 
     # Unicode symbols
-    readonly PS_SYMBOL_DARWIN=''
-    readonly PS_SYMBOL_LINUX='❯'
-    readonly PS_SYMBOL_OTHER='%'
+    readonly PS_SYMBOL_LINUX='λ'
+    readonly PS_SYMBOL_SUCCESS='✔'
+    readonly PS_SYMBOL_ERROR='✘'
     readonly GIT_BRANCH_SYMBOL='@'
     readonly GIT_BRANCH_CHANGED_SYMBOL='' #⇅
     readonly GIT_NEED_PUSH_SYMBOL='+'
@@ -53,18 +53,7 @@ __powerline() {
     readonly RESET="\[$(tput sgr0)\]"
     readonly BOLD="\[$(tput bold)\]"
 
-    if [[ -z "$PS_SYMBOL" ]]; then
-      case "$(uname)" in
-          Darwin)
-              PS_SYMBOL=$PS_SYMBOL_DARWIN
-              ;;
-          Linux)
-              PS_SYMBOL=$PS_SYMBOL_LINUX
-              ;;
-          *)
-              PS_SYMBOL=$PS_SYMBOL_OTHER
-      esac
-    fi
+    PS_SYMBOL=$PS_SYMBOL_LINUX
 
     __git_info() {
         [ -x "$(which git)" ] || return    # git not found

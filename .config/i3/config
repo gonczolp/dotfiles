@@ -37,6 +37,10 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
+# Cycle through active workspaces
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
+
 # move current workspace between monitors
 bindsym $mod+Control+h move workspace to output left
 bindsym $mod+Control+j move workspace to output down
@@ -49,13 +53,9 @@ bindsym $mod+Control+Down move workspace to output down
 bindsym $mod+Control+Up move workspace to output up
 bindsym $mod+Control+Right move workspace to output right
 
-# split in horizontal orientation
-# bindsym $mod+h split h
-
-# split in vertical orientation
-# bindsym $mod+v split v
-
 # toggle split between horizontal and vertical
+# bindsym $mod+h split h
+# bindsym $mod+v split v
 bindsym $mod+v split toggle
 
 # enter fullscreen mode for the focused container
@@ -116,13 +116,11 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 
 # force applications to open in specific workspace
 # use xprop to define class
-assign [class="Chromium"] $ws0
-assign [class="URxvt"] $ws1
-assign [class="Pamac-manager"] $ws1
-assign [class="Code"] $ws2
-assign [class="Slack"] $ws8
-assign [class="Spotify"] $ws9
-assign [class="spotify"] $ws9
+#assign [class="Chromium"] $ws0
+#assign [class="URxvt"] $ws1
+#assign [class="Code"] $ws2
+assign [class="Telegram"] $ws8
+assign [class="Telegram-desktop"] $ws8
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -156,12 +154,14 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 set $bg-color 	                #282828
-set $border-color 	        #3c3836
+set $border-color				#3c3836
 set $inactive-bg-color          #1d2021
 set $indicator                  #504945
 set $text-color                 #ebdbb2
-set $inactive-text-color        #a89984
+set $inactive-text-color        #7c6f64
 set $urgent-bg-color            #fb4934
+set $blue 			#458588
+set $light-blue			#83a598
 
 # window colors
 #                       border              background         text                 indicator
@@ -178,6 +178,25 @@ hide_edge_borders smart
 # optional gaps
 # gaps inner 10
 # smart_gaps on
+
+bar {
+	font pango:Ubuntu Bold 10
+	colors {
+		background $bg-color
+		statusline $text-color
+		separator $urgent-bg-color
+		focused_workspace  $blue $blue $text-color
+        	active_workspace   $blue $blue $text-color
+      		inactive_workspace $bg-color $bg-color $inactive-text-color
+        	urgent_workspace   $urgent-bg-color $urgent-bg-color $bg-color
+	}
+	status_command i3blocks
+	position top
+	mode dock
+	modifier none
+	output primary
+	separator_symbol " "
+}
 
 # lock
 bindsym Scroll_Lock exec i3lock-fancy -t ""
@@ -197,16 +216,16 @@ exec xinput --set-prop $TOUCHPAD "libinput Natural Scrolling Enabled" 1
 exec xinput --set-prop $TOUCHPAD "libinput Tapping Enabled" 1
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+bindsym XF86AudioRaiseVolume exec --no-startup-id sh $HOME/.scripts/volume-actions.sh up
+bindsym XF86AudioLowerVolume exec --no-startup-id sh $HOME/.scripts/volume-actions.sh down
+bindsym XF86AudioMute exec --no-startup-id sh $HOME/.scripts/volume-actions.sh mute
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id sh $HOME/.scripts/backlight-actions.sh up
+bindsym XF86MonBrightnessDown exec --no-startup-id sh $HOME/.scripts/backlight-actions.sh down
 
 # Touchpad controls
-bindsym XF86TouchpadToggle exec bash $HOME/.config/i3/toggle-touchpad.sh # toggle touchpad
+bindsym XF86TouchpadToggle exec --no-startup-id sh $HOME/.scripts/toggle-touchpad.sh
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play
@@ -215,17 +234,10 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # polybar
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+# exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # wallpaper
-exec_always --no-startup-id feh --bg-fill $HOME/pics/flamingo.jpg
-
-# network manager
-exec --no-startup-id nm-applet &
-
-# gnome polkit for pamac
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 \
-& eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
+exec_always --no-startup-id feh --bg-fill $HOME/pics/arch3.png
 
 # notifications
 exec --no-startup-id dunst &

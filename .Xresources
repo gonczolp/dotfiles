@@ -6,12 +6,12 @@ URxvt.cursorBlink: 1
 URxvt.urgentOnBell: true
 
 ! font
-URxvt.font: xft:Monaco:weight=700:size=10
-URxvt.letterSpace: -1
+URxvt.font: xft:Monaco:weight=200:pixelsize=14
+URxvt.letterSpace: -2
 !URxvt.font: xft:UbuntuMono:size=12
 
 ! terminal padding
-URxvt.internalBorder: 10
+! URxvt.internalBorder: 10
 
 ! make otf / ttf fonts look pretty.  does not matter if you are using a bitmap font.
 Xft.autohint: 0
