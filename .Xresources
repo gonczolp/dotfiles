@@ -8,7 +8,6 @@ URxvt.urgentOnBell: true
 ! font
 URxvt.font: xft:Monaco:weight=200:pixelsize=14
 URxvt.letterSpace: -2
-!URxvt.font: xft:UbuntuMono:size=12
 
 ! terminal padding
 ! URxvt.internalBorder: 10
@@ -23,7 +22,7 @@ Xft.rgba: rgb
 
 ! clickable links, clipboard support, mouse wheel support, and on the fly font resizing
 ! you will need to install the relevent perl extensions for these to work
-URxvt.url-launcher: chromium
+URxvt.url-launcher: brave
 URxvt.matcher.button: 1
 URxvt.perl-ext-common: default,matcher,vtwheel
 

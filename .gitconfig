@@ -4,3 +4,18 @@
 
 [alias]
 	lg = log --graph --pretty=format:'%C(red)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --all
+	undo = reset --soft HEAD~1
+	cm = commit -m
+	rpo = remote prune origin
+	# https://gist.github.com/robmiller/6018582
+	# get the current branch name (not so useful in itself, but used in other aliases)
+	branch-name = "!git rev-parse --abbrev-ref HEAD"
+	# push the current branch to the remote "origin", and set it to track the upstream branch
+	pub = "!git push -u origin $(git branch-name)"
+	# delete the remote version of the current branch
+	unpub = "!git push origin :$(git branch-name)"
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

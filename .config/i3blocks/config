@@ -3,13 +3,10 @@ markup=pango
 interval=30
 separator_block_width=15
 
-[title]
-command=xtitle -s
-interval=persist
-color=#7c6f64
-
 [pkg]
 interval=3600
+
+[bluetooth]
 
 [wireless]
 

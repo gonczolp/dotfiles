@@ -1,6 +1,6 @@
 #!/bin/sh
 
-killall compton
+killall picom
 
 xrandr \
 	--output VIRTUAL1 --off \
@@ -13,7 +13,7 @@ xrandr \
 	--output LVDS1 --off \
 	--output VGA1 --primary --pos 0x0 --rotate normal --mode 1920x1200
 
-compton -b
+picom -b
 
 i3-msg restart
 

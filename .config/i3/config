@@ -8,7 +8,8 @@ font pango:Ubuntu:Regular 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+# bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -55,8 +56,9 @@ bindsym $mod+Control+Right move workspace to output right
 
 # toggle split between horizontal and vertical
 # bindsym $mod+h split h
-# bindsym $mod+v split v
-bindsym $mod+v split toggle
+bindsym $mod+v split v
+bindsym $mod+b split h
+# bindsym $mod+v split toggle
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -121,6 +123,7 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 #assign [class="Code"] $ws2
 assign [class="Telegram"] $ws8
 assign [class="Telegram-desktop"] $ws8
+for_window [class="jetbrains-toolbox"] floating enable
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -204,6 +207,7 @@ bindsym Scroll_Lock exec i3lock-fancy -t ""
 # launcher
 # bindsym $mod+d exec dmenu_run
 bindsym $mod+d exec rofi -show run
+bindsym $mod+p exec rofi -show run
 
 # printscreen
 bindsym Print exec maim -su | xclip -selection clipboard -t image/png
@@ -246,4 +250,4 @@ exec --no-startup-id dunst &
 exec --no-startup-id redshift &
 
 # start compositor
-exec --no-startup-id compton -b
+exec --no-startup-id picom -b

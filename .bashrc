@@ -6,7 +6,7 @@
 [[ $- != *i* ]] && return
 
 # defaults
-export BROWSER=/usr/bin/chromium
+export BROWSER=/usr/bin/brave
 export EDITOR=/usr/bin/nvim
 
 # set vi style editing
@@ -24,7 +24,7 @@ shopt -s cmdhist
 # disable default ctrl+s pause and ctrl+q resume functionality
 stty -ixon
 
-# expand options 
+# expand options
 shopt -s dotglob
 shopt -s expand_aliases
 shopt -s extglob
@@ -35,21 +35,26 @@ export HISTFILESIZE=10000
 export HISTCONTROL=ignoreboth
 shopt -s histappend
 
+# paths
+PATH=$PATH:~/.cargo/bin
+
 # aliases
 alias ls='ls --group-directories-first --color=auto -F'
 alias grep='grep --color=auto'
-alias cd..='cd ..'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
-alias .....='cd ../../../..'
-alias ......='cd ../../../../..'
-alias ll='ls -la'
+alias l='exa --group-directories-first --git --classify'
+alias ll='exa --group-directories-first --git --long --classify'
+alias lll='exa --group-directories-first --git --long --classify --all'
+alias llt='exa --group-directories-first --git --long --classify --all --tree --level'
 alias open='xdg-open'
 alias df='df -h'
 alias du='du -h'
 alias cp='cp -i'
 alias v='nvim'
+alias n='nnn'
+alias blu='bluetoothctl'
 
 # apply powerline
 source ~/.bash_powerline

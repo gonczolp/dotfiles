@@ -3,6 +3,10 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'morhetz/gruvbox' " gruvbox colors
 
+" statusline
+" Plug 'itchyny/lightline.vim'
+" set noshowmode
+
 " tpope stuff
 Plug 'tpope/vim-surround' " selectable surroundings
 Plug 'tpope/vim-commentary' " batch comment
@@ -26,8 +30,11 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
 " golang plugins
-Plug 'mdempsky/gocode', { 'rtp': 'nvim', 'do': '~/.local/share/nvim/plugged/gocode/nvim/symlink.sh' }
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" Plug 'mdempsky/gocode', { 'rtp': 'nvim', 'do': '~/.local/share/nvim/plugged/gocode/nvim/symlink.sh' }
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
+" rust plugins
+Plug 'rust-lang/rust.vim'
 
 " end of plugins
 call plug#end()
@@ -35,6 +42,7 @@ call plug#end()
 " colorscheme
 colorscheme gruvbox
 set background=dark
+set termguicolors
 
 " relative line numbers
 set number relativenumber
